@@ -1,18 +1,9 @@
 ## js-interactions-drag
 
-0.0.1
+0.0.2
 
 A set of opinions and encapsulation for working with the browser's Drag and Drop API.
 
-### API
-
-```
-handleEvent
-```
-
-The only relatively novel method in this object is the `handleEvent` method, which accepts an array of objects that define a method and, optionally, arguments. 
-
-This enables quickly creating plugins using configuration.
 
 ### Quick Start
 
