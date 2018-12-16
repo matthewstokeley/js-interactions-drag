@@ -1,5 +1,7 @@
 ## js-interactions-drag
 
+0.0.1
+
 A set of opinions and encapsulation for working with the browser's Drag and Drop API.
 
 ### API
