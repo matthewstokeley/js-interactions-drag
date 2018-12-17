@@ -1,14 +1,13 @@
-// helper methods for the Drag and Drop API
-// 
-export default var dragMethods = {
+
+var dragMethods = {
   /**
    * [changeDropEffect description]
    * @chainable
    * @param  {[type]} effect [description]
    * @return {[type]}        [description]
    */
-  changeDropEffect: (effect) => {
-    this/event.dataTransfer.changeDropEffect(effect);
+  changeDropEffect: function(effect) {
+    this.event.dataTransfer.dropEffect = effect;
     return this;
   },
 
@@ -17,8 +16,8 @@ export default var dragMethods = {
    * @param  {[type]} effect [description]
    * @return {[type]}        [description]
    */
-  changeEffectAllowed: (effect) => {
-    this.event.dataTransfer.effectAllowed(effect);
+  changeEffectAllowed: function(effect) {
+    this.event.dataTransfer.effectAllowed = effect;
     return this;
   },
 
@@ -27,20 +26,20 @@ export default var dragMethods = {
    * @chainable
    * @return {[type]} [description]
    */
-  removeDefaultDragImage: (event) => {
-    this.setDragImage(new Image());
+  removeDefaultDragImage: function() {
+    this.setDragImage(new Image(), 0, 0);
     return this;
   },
 
-  /**
+  /*
    * [description]
    * @param  {[type]} img [description]
    * @param  {[type]} x   [description]
    * @param  {[type]} y   [description]
    * @return {[type]}     [description]
    */
-  setDragImage: (img, x, y) => {
-    this.event.dataTransfer.setDragImage(img, x || -, y || 0);
+  setDragImage: function(img, x, y) {
+    this.event.dataTransfer.setDragImage(img, x, y);
     return this;
   },
 
@@ -50,22 +49,29 @@ export default var dragMethods = {
    * @param  {[type]} methods [description]
    * @return {[type]}         [description]
    */
-  handleEvent(event,  methods) {
-  	this.event = event;
-  	return this;
+  handleEvent: function(event) {
+    this.event = event;
+    return this;
   },
 
-  mixin(fn, args) {
-  	if (!args) {
-  		args = [];
+  /**
+   * [description]
+   * @param  {Function} fn   [description]
+   * @param  {[type]}   args [description]
+   * @return {[type]}        [description]
+   */
+  mixin: function(fn, args) {
+    if (!args) {
+      args = [this.event];
     } else if (!Array.isArray(args)) {
-  		args = [this.event, args]
-  	} else {
-  		args.splice(0, 1, this.event);
-  	}
+      args = [this.event, args]
+    } else {
+      args.splice(0, 0, this.event);
+    }
 
-  	fn.apply(this, args);
+    fn.apply(this, args);
 
+    return this;
   }
 
 };
