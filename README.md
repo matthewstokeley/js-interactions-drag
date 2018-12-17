@@ -23,7 +23,7 @@ var layerZIndex = (event) => { event.target.style.zIndex = '9999' }
 
 ```
 // use the `dragMethods` api to pipe in drag methods and the mixin.
-// currently using chaining, although it's possible there is a better syntax
+// currently using chaining, although a decoupled implementation of an event system would be better.
 
 import { dragMethods as d } from './src/index'
 
