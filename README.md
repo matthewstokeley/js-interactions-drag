@@ -17,7 +17,7 @@ var layerZIndex = (event) => { event.target.style.zIndex = '9999' }
 
 ```
 <!-- define a drag handler -->
-<div draggable="true" ondrag="handleDrag(event)">div</div>
+<div draggable="true" ondragstart="handleDrag(event)">div</div>
 
 ```
 
@@ -27,10 +27,10 @@ var layerZIndex = (event) => { event.target.style.zIndex = '9999' }
 
 import { dragMethods as d } from './src/index'
 
-var handleDrag = (event) => {
 
-	d.handleEvent(event).changeEffectAllowed('none').mixin(layerZIndex);
+var handleDragStart = (event) => d.handleEvent(event)
+.changeEffectAllowed('none')
+.mixin(layerZIndex)
 
-}
 
 ```
