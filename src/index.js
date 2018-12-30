@@ -68,9 +68,9 @@ export default const dragMethods = {
       args.splice(0, 0, this.event)
     }
 
-    fn.apply(this, args);
+    fn.apply(this, args)
 
-    return this;
+    return this
   }
 
 };
