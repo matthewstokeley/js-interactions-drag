@@ -9,7 +9,7 @@ A set of opinions and encapsulation for working with the browser's Drag and Drop
 
 ```
 
-// define a mixin - a functionality that we want to happen on a drag event.
+// define a mixin with a functionality that occurs on a drag event.
 
 var layerZIndex = (event) => { event.target.style.zIndex = '9999' } 
 
@@ -22,15 +22,73 @@ var layerZIndex = (event) => { event.target.style.zIndex = '9999' }
 ```
 
 ```
-// use the `dragMethods` api to pipe in drag methods and the mixin.
-// currently using chaining, although it's possible there is a better syntax
+// use the `dragMethods` api to pipe in the event, the use the `mixin` method
+// to add functionality.
 
 import { dragMethods as d } from './src/index'
 
 
 var handleDragStart = (event) => d.handleEvent(event)
-.changeEffectAllowed('none')
-.mixin(layerZIndex)
-
+  .changeEffectAllowed('none')
+  .mixin(layerZIndex)
 
 ```
+
+
+#### API Documentation
+
+In addition to mixins, several `dragInterface` methods are wrapped as publicly available methods.
+`changeDropEffect`  
+
+Enumerated String  
+
+
+---
+`changeEffectAllowed`  
+
+Enumerated String  
+
+
+
+---
+`removeDefaultDragImage`
+
+Removes the auto-generated,
+low opacity image from the 
+`DragTransfer` object.
+
+
+
+---
+`setDragImage`
+
+ImageObject
+ 
+  
+  
+  
+ ---
+`handleEvent`  
+ 
+ EventObject
+  
+  
+  
+  ---
+  `mixin`
+  
+  
+  
+  
+  
+  ---
+  
+  #### Mixins
+  
+ a directory is available with potentially common drag methods
+ 
+ ###### moveElToPointer
+  
+  
+  
+  
