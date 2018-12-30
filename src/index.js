@@ -1,14 +1,14 @@
 
-var dragMethods = {
+export default const dragMethods = {
   /**
    * [changeDropEffect description]
    * @chainable
    * @param  {string} effect [description]
    * @return {Object}        [description]
    */
-  changeDropEffect: function(effect) {
-    this.event.dataTransfer.dropEffect = effect;
-    return this;
+  changeDropEffect: (effect) => {
+    this.event.dataTransfer.dropEffect = effect
+    return this
   },
 
   /**
@@ -16,9 +16,9 @@ var dragMethods = {
    * @param  {String} effect [description]
    * @return {Object}        [description]
    */
-  changeEffectAllowed: function(effect) {
-    this.event.dataTransfer.effectAllowed = effect;
-    return this;
+  changeEffectAllowed: (effect) => {
+    this.event.dataTransfer.effectAllowed = effect
+    return this
   },
 
   /**
@@ -26,7 +26,7 @@ var dragMethods = {
    * @chainable
    * @return {Object} [description]
    */
-  removeDefaultDragImage: function() {
+  removeDefaultDragImage: () => {
     this.setDragImage(new Image(), 0, 0);
     return this;
   },
@@ -38,9 +38,9 @@ var dragMethods = {
    * @param  {Number} y   [description]
    * @return {Object}     [description]
    */
-  setDragImage: function(img, x, y) {
-    this.event.dataTransfer.setDragImage(img, x, y);
-    return this;
+  setDragImage: (img, x, y) => {
+    this.event.dataTransfer.setDragImage(img, x, y)
+    return this
   },
 
   /**
@@ -48,24 +48,24 @@ var dragMethods = {
    * @param  {EventObject} event   [description]
    * @return {Object}         [description]
    */
-  handleEvent: function(event) {
-    this.event = event;
-    return this;
+  handleEvent: (event) => {
+    this.event = event
+    return this
   },
 
   /**
-   * [description]
+   * 
    * @param  {Function} fn   [description]
    * @param  {Mixed}    args [description]
    * @return {Object}        [description]
    */
-  mixin: function(fn, args) {
+  mixin: (fn, args)=> {
     if (!args) {
-      args = [this.event];
+      args = [this.event]
     } else if (!Array.isArray(args)) {
       args = [this.event, args]
     } else {
-      args.splice(0, 0, this.event);
+      args.splice(0, 0, this.event)
     }
 
     fn.apply(this, args);
