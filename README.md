@@ -11,7 +11,7 @@ A set of opinions and encapsulation for working with the browser's Drag and Drop
 
 // define a mixin with a functionality that occurs on a drag event.
 
-var layerZIndex = (event) => { event.target.style.zIndex = '9999' } 
+const layerZIndex = (event) => { event.target.style.zIndex = '9999' } 
 
 ```
 
@@ -28,7 +28,7 @@ var layerZIndex = (event) => { event.target.style.zIndex = '9999' }
 import { dragMethods as d } from './src/index'
 
 
-var handleDragStart = (event) => d.handleEvent(event)
+const handleDragStart = (event) => d.handleEvent(event)
   .changeEffectAllowed('none')
   .mixin(layerZIndex)
 
