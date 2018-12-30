@@ -85,7 +85,7 @@ ImageObject
   
   #### Mixins
   
- a directory is available with potentially common drag methods
+ a directory is available as a storehouse for potentially common dragging functionality.
  
  ###### moveElToPointer
   
