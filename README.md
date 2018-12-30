@@ -62,8 +62,9 @@ low opacity image from the
 ---
 `setDragImage`
 
-ImageObject
+ImageObject, Int||String, Int||String
  
+Accepts an image object and grid coordinates.
   
   
   
@@ -77,6 +78,7 @@ ImageObject
   ---
   `mixin`
   
+  Function
   
   
   
