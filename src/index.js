@@ -1,76 +1,94 @@
 
 export default const dragMethods = {
   /**
-   * [changeDropEffect description]
+   * 
    * @chainable
-   * @param  {string} effect [description]
-   * @return {Object}        [description]
+   * @param  {string}   effect
+   * @return {Object}
    */
-  changeDropEffect: (effect) => {
+  changeDropEffect: ( effect ) => {
+    if ( typeof effect !== 'string') {
+        throw new Error( 'Invalid Argument Type' );
+    }
+    
     this.event.dataTransfer.dropEffect = effect
     return this
   },
 
   /**
-   * [changeEffectAllowed description]
-   * @param  {String} effect [description]
-   * @return {Object}        [description]
+   *
+   * @chainable
+   * @param  {String}    effect
+   * @return {Object}
    */
-  changeEffectAllowed: (effect) => {
+  changeEffectAllowed: ( effect ) => {    
+    if ( typeof effect !== 'string') {
+        throw new Error( 'Invalid Argument Type' );
+    }
+    
     this.event.dataTransfer.effectAllowed = effect
     return this
   },
 
   /**
-   * [description]
+   * 
    * @chainable
-   * @return {Object} [description]
+   * @return {Object}
    */
   removeDefaultDragImage: () => {
-    this.setDragImage(new Image(), 0, 0);
+    this.setDragImage( new Image(), 0, 0 );
     return this;
   },
 
   /*
-   * [description]
-   * @param  {Image}  img [description]
-   * @param  {Number} x   [description]
-   * @param  {Number} y   [description]
-   * @return {Object}     [description]
+   * 
+   * @param  {Image}    img
+   * @param  {Number}   x 
+   * @param  {Number}   y
+   * @return {Object}
    */
-  setDragImage: (img, x, y) => {
-    this.event.dataTransfer.setDragImage(img, x, y)
+  setDragImage: ( img, x, y ) => {
+    if ( typeof x !== 'number' ) {
+        throw new Error( 'Invalid Argument Type' );
+    }
+    
+    if ( typeof y !== 'number' ) {
+        throw new Error( 'Invalid Argument Type' );
+    }
+    
+    this.event.dataTransfer.setDragImage( img, x, y )
     return this
   },
 
   /**
-   * [eventHandler description]
-   * @param  {EventObject} event   [description]
-   * @return {Object}         [description]
+   * 
+   * @param  {EventObject}   event
+   * @return {Object}
    */
-  handleEvent: (event) => {
+  handleEvent: ( event ) => {
     this.event = event
     return this
   },
 
   /**
    * 
-   * @param  {Function} fn   [description]
-   * @param  {Mixed}    args [description]
-   * @return {Object}        [description]
+   * @param  {Function}    fn
+   * @param  {Mixed}       args
+   * @return {Object} 
    */
   mixin: (fn, args)=> {
-    if (!args) {
-      args = [this.event]
-    } else if (!Array.isArray(args)) {
-      args = [this.event, args]
+    if ( ! args) {
+      args = [ this.event ]
+    } else if ( ! Array.isArray( args ) ) {
+      args = [ this.event, args ]
     } else {
-      args.splice(0, 0, this.event)
+      args.splice( 0, 0, this.event )
     }
 
-    fn.apply(this, args)
+    fn.apply( this, args )
 
     return this
+    
   }
 
 };
