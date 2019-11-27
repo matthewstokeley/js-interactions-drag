@@ -85,7 +85,7 @@ Accepts an image object and grid coordinates.
   
   #### Mixins
   
- a directory is available as a storehouse for potentially common dragging functionality.
+ 
  
  ###### moveElToPointer
   
