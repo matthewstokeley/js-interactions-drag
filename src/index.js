@@ -1,5 +1,5 @@
 
-export default const dragMethods = {
+export var dragMethods = {
   /**
    * 
    * @chainable
